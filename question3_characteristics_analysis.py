@@ -184,6 +184,15 @@ def build_predictive_model(contestant_stats, fan_votes):
     for i, feature in enumerate(features):
         print(f"    {feature}: {model_judge.coef_[i]:.4f}")
     
+    # Prepare weights data for CSV export
+    weights_data = []
+    for i, feature in enumerate(features):
+        weights_data.append({
+            'Factor': feature,
+            'Judge_Score_Weight': model_judge.coef_[i],
+            'Judge_Score_R2': r2_judge
+        })
+    
     # Fan vote prediction (if available)
     if fan_votes is not None:
         # Merge fan votes with contestant stats
@@ -207,6 +216,11 @@ def build_predictive_model(contestant_stats, fan_votes):
             for i, feature in enumerate(features):
                 print(f"    {feature}: {model_fan.coef_[i]:.4f}")
             
+            # Add fan vote weights to the data
+            for i, factor_dict in enumerate(weights_data):
+                factor_dict['Fan_Vote_Weight'] = model_fan.coef_[i]
+                factor_dict['Fan_Vote_R2'] = r2_fan
+            
             # Compare judge vs fan coefficient patterns
             print("\n--- Comparison: Judge Scores vs Fan Votes ---")
             print("Feature impacts (relative):")
@@ -220,6 +234,11 @@ def build_predictive_model(contestant_stats, fan_votes):
                     print(f"    Judge impact: {model_judge.coef_[i]:.4f}")
                     print(f"    Fan impact: {model_fan.coef_[i]:.4f}")
                     print(f"    Fan/Judge ratio: {ratio:.2f}")
+    
+    # Save factor weights to CSV
+    weights_df = pd.DataFrame(weights_data)
+    weights_df.to_csv('question3_factor_weights.csv', index=False)
+    print("\nSaved factor weights to 'question3_factor_weights.csv'")
     
     return model_judge
 
