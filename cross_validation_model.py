@@ -87,7 +87,7 @@ def prepare_features(df, fan_votes):
                     'judge_pct': judge_pct,
                     'judge_rank': judge_rank,
                     'n_contestants': n_contestants,
-                    'age': row.get('celebrity_age_during_season', 40),  # Default to 40 if missing
+                    'age': row.get('celebrity_age_during_season', 35),  # Default to 35 (approximate median age)
                     'industry': row.get('celebrity_industry', 'Unknown'),
                     'partner': row.get('ballroom_partner', 'Unknown'),
                     'eliminated': row['eliminated'],
@@ -314,9 +314,13 @@ def validate_against_optimization_model(model_data):
                 'contestant'
             ]
             
-            if len(opt_eliminated) > 0:
-                # Check agreement with actual elimination
+            # Handle single elimination weeks (most common case)
+            if len(opt_eliminated) == 1:
                 if ml_eliminated == opt_eliminated[0]:
+                    agreement_count += 1
+            # For multi-elimination weeks, check if ML prediction is in the eliminated set
+            elif len(opt_eliminated) > 1:
+                if ml_eliminated in opt_eliminated:
                     agreement_count += 1
     
     agreement_rate = agreement_count / total_weeks if total_weeks > 0 else 0
