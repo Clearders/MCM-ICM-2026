@@ -231,7 +231,8 @@ Data quality: 421 contestants across 34 seasons, 2,378 contestant-week observati
 8. `question3_age_impact.csv` - Age impact analysis
 9. `question3_industry_impact.csv` - Industry impact analysis
 10. `question3_contestant_stats.csv` - Complete contestant data
-11. `question4_proposed_system.csv` - Proposed system specification
+11. `question3_factor_weights.csv` - Factor weights from predictive models (judge scores and fan votes)
+12. `question4_proposed_system.csv` - Proposed system specification
 
 ---
 

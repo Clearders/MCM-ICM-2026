@@ -45,6 +45,7 @@ After running the analysis, you will have:
 - `question3_pro_dancer_stats.csv` - Pro dancer performance
 - `question3_age_impact.csv` - Age impact on performance
 - `question3_industry_impact.csv` - Industry impact on performance
+- `question3_factor_weights.csv` - Factor weights from predictive models
 
 **Question 4 outputs:**
 - `question4_proposed_system.csv` - Proposed system specification

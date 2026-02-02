@@ -32,6 +32,7 @@ The analysis addresses:
 - `question3_age_impact.csv` - Impact of celebrity age on performance
 - `question3_industry_impact.csv` - Impact of celebrity industry on performance
 - `question3_contestant_stats.csv` - Complete contestant statistics
+- `question3_factor_weights.csv` - Factor weights from predictive models (judge scores and fan votes)
 - `question4_proposed_system.csv` - Proposed voting system details
 
 ## Requirements
