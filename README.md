@@ -82,6 +82,7 @@ Runtime: ~2-3 minutes
 
 - **README_SOLUTION.md** - Detailed methodology and approach
 - **ANALYSIS_SUMMARY.md** - Complete findings with statistics
+- **CROSS_VALIDATION.md** - Cross-validation model documentation
 - **QUICK_START.md** - Usage instructions and troubleshooting
 
 ### 🛠️ Technologies Used
