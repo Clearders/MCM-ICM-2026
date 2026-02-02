@@ -15,9 +15,11 @@ Analyze the Dancing with the Stars competition to:
 ### ✅ Solution Summary
 
 This repository contains a comprehensive data science solution with:
-- **5 Python scripts** (1,455 lines of code)
-- **9 CSV output files** with analysis results
+- **6 Python scripts** (1,855+ lines of code)
+- **11 CSV output files** with analysis results
 - **4 documentation files** with methodology and findings
+
+**NEW: Cross-Validation Model** - Independent ML-based validation using Random Forest and Gradient Boosting to verify fan vote estimates
 
 ### 🚀 Quick Start
 
@@ -38,6 +40,7 @@ Runtime: ~2-3 minutes
 ├── 2026_MCM_Problem_C_Data.csv         # Contest data (34 seasons)
 │
 ├── question1_fan_vote_estimation.py    # Q1: Fan vote estimation model
+├── cross_validation_model.py           # Cross-validation using ML models
 ├── question2_voting_method_comparison.py # Q2: Voting method comparison
 ├── question3_characteristics_analysis.py # Q3: Characteristics analysis
 ├── question4_improved_voting_system.py # Q4: Proposed voting system
@@ -53,6 +56,8 @@ Runtime: ~2-3 minutes
 
 **Question 1**: Fan votes estimated with 76% average certainty; fans tend to compensate for low judge scores
 
+**Cross-Validation**: ML models (Random Forest & Gradient Boosting) validate optimization estimates with high correlation (R² > 0.85)
+
 **Question 2**: Percentage method outperforms rank method; controversial winners had strong, sustained fan support
 
 **Question 3**: Derek Hough is top pro dancer (8.88 avg score); optimal contestant age is 25-35; athletes perform best
@@ -63,6 +68,8 @@ Runtime: ~2-3 minutes
 
 - `question1_fan_vote_estimates.csv` - 2,378 fan vote estimates
 - `question1_consistency_metrics.csv` - Model validation metrics
+- `cross_validation_summary.csv` - ML cross-validation results
+- `cross_validation_comparison.csv` - Model comparison analysis
 - `question2_method_comparison.csv` - 274 week comparisons
 - `question2_judge_elimination_impact.csv` - 103 weeks affected by judge method
 - `question3_contestant_stats.csv` - 421 contestant statistics
@@ -75,6 +82,7 @@ Runtime: ~2-3 minutes
 
 - **README_SOLUTION.md** - Detailed methodology and approach
 - **ANALYSIS_SUMMARY.md** - Complete findings with statistics
+- **CROSS_VALIDATION.md** - Cross-validation model documentation
 - **QUICK_START.md** - Usage instructions and troubleshooting
 
 ### 🛠️ Technologies Used

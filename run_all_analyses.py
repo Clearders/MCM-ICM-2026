@@ -38,6 +38,7 @@ def main():
     
     scripts = [
         ("question1_fan_vote_estimation.py", "Question 1: Fan Vote Estimation Model"),
+        ("cross_validation_model.py", "Cross-Validation: ML-based Validation of Fan Vote Estimates"),
         ("question2_voting_method_comparison.py", "Question 2: Voting Method Comparison"),
         ("question3_characteristics_analysis.py", "Question 3: Pro Dancer & Celebrity Characteristics"),
         ("question4_improved_voting_system.py", "Question 4: Improved Voting System Proposal")
@@ -66,6 +67,8 @@ def main():
         print("\nGenerated files:")
         print("  - question1_fan_vote_estimates.csv")
         print("  - question1_consistency_metrics.csv")
+        print("  - cross_validation_summary.csv")
+        print("  - cross_validation_comparison.csv")
         print("  - question2_method_comparison.csv")
         print("  - question2_judge_elimination_impact.csv")
         print("  - question3_pro_dancer_stats.csv")
