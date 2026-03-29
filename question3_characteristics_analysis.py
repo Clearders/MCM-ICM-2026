@@ -237,8 +237,38 @@ def build_predictive_model(contestant_stats, fan_votes):
     
     # Save factor weights to CSV
     weights_df = pd.DataFrame(weights_data)
+    
+    # Calculate relative weights (normalized percentages)
+    # For judge scores
+    judge_weights_abs = np.abs(weights_df['Judge_Score_Weight'].values)
+    judge_weights_sum = judge_weights_abs.sum()
+    if judge_weights_sum > 0:
+        weights_df['Judge_Score_Relative_Weight_%'] = (judge_weights_abs / judge_weights_sum * 100).round(2)
+    else:
+        weights_df['Judge_Score_Relative_Weight_%'] = 0
+    
+    # For fan votes (if available)
+    if 'Fan_Vote_Weight' in weights_df.columns:
+        fan_weights_abs = np.abs(weights_df['Fan_Vote_Weight'].values)
+        fan_weights_sum = fan_weights_abs.sum()
+        if fan_weights_sum > 0:
+            weights_df['Fan_Vote_Relative_Weight_%'] = (fan_weights_abs / fan_weights_sum * 100).round(2)
+        else:
+            weights_df['Fan_Vote_Relative_Weight_%'] = 0
+    
     weights_df.to_csv('question3_factor_weights.csv', index=False)
     print("\nSaved factor weights to 'question3_factor_weights.csv'")
+    
+    # Display relative weights summary
+    print("\n--- Relative Weights Summary ---")
+    print("\nJudge Score Prediction - Factor Importance (%):")
+    for idx, row in weights_df.iterrows():
+        print(f"  {row['Factor']}: {row['Judge_Score_Relative_Weight_%']:.2f}%")
+    
+    if 'Fan_Vote_Relative_Weight_%' in weights_df.columns:
+        print("\nFan Vote Prediction - Factor Importance (%):")
+        for idx, row in weights_df.iterrows():
+            print(f"  {row['Factor']}: {row['Fan_Vote_Relative_Weight_%']:.2f}%")
     
     return model_judge
 
